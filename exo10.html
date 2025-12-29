@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modale de Notification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #openModalBtn {
+            padding: 12px 30px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #openModalBtn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles de la modale */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-content p {
+            margin-bottom: 20px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        #closeModalBtn {
+            padding: 10px 25px;
+            font-size: 14px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #closeModalBtn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <button id="openModalBtn">Ouvrir</button>
+
+    <!-- La Modale -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>Notification</h2>
+            <p>Ceci est une modale de notification simple. Cliquez sur "Fermer" pour la fermer.</p>
+            <button id="closeModalBtn">Fermer</button>
+        </div>
+    </div>
+
+    <script>
+        // Récupérer les éléments
+        const modal = document.getElementById('myModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+
+        // Ouvrir la modale
+        openBtn.addEventListener('click', function() {
+            modal.classList.add('show');
+        });
+
+        // Fermer la modale avec le bouton "Fermer"
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+        });
+
+        // Fermer la modale en cliquant à l'extérieur
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu déroulant animé</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #70aa24b6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .menu {
+      width: 220px;
+      background-color: #991515;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .menu-titre {
+      background-color: #dbc234;
+      color: white;
+      padding: 15px;
+      cursor: pointer;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .menu-titre:hover {
+      background-color: #d3cf01;
+    }
+
+    .menu-contenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      background-color: #ecf1ee;
+    }
+
+    .menu-contenu a {
+      display: block;
+      padding: 12px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .menu-contenu a:hover {
+      background-color: #dfe6e9;
+    }
+    .menu.ouvert .menu-contenu {
+      max-height: 200px; 
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu" id="menu">
+    <div class="menu-titre" onclick="toggleMenu()">☰ Menu</div>
+    <div class="menu-contenu">
+      <a href="#">Accueil</a>
+      <a href="#">Services</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("ouvert");
+    }
+  </script>
+
+</body>
+</html>

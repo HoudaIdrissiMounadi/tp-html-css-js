@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Calculatrice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculatrice {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    input {
+      width: 120px;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      width: 50px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #resultat {
+      margin-top: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculatrice">
+    <h2>Mini Calculatrice</h2>
+
+    <input type="number" id="nb1" placeholder="Nombre 1">
+    <input type="number" id="nb2" placeholder="Nombre 2">
+    <br>
+
+    <button onclick="calcul('+')">+</button>
+    <button onclick="calcul('-')">−</button>
+    <button onclick="calcul('*')">×</button>
+    <button onclick="calcul('/')">÷</button>
+
+    <div id="resultat"></div>
+  </div>
+
+  <script>
+    function calcul(operateur) {
+      const n1 = parseFloat(document.getElementById("nb1").value);
+      const n2 = parseFloat(document.getElementById("nb2").value);
+      const res = document.getElementById("resultat");
+
+      // Vérification des entrées
+      if (isNaN(n1) || isNaN(n2)) {
+        res.textContent = "⚠️ Entrez deux nombres valides.";
+        res.style.color = "red";
+        return;
+      }
+
+      let resultat;
+
+      switch (operateur) {
+        case '+':
+          resultat = n1 + n2;
+          break;
+        case '-':
+          resultat = n1 - n2;
+          break;
+        case '*':
+          resultat = n1 * n2;
+          break;
+        case '/':
+          if (n2 === 0) {
+            res.textContent = "❌ Division par zéro impossible.";
+            res.style.color = "red";
+            return;
+          }
+          resultat = n1 / n2;
+          break;
+      }
+
+      res.textContent = "Résultat : " + resultat;
+      res.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

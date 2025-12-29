@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Timer en temps réel</title>
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f3f3f3;
+    }
+
+    .timer {
+      background: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-size: 1.3em;
+      text-align: center;
+    }
+
+    span {
+      font-weight: bold;
+      color: #2196f3;
+    }
+  </style>
+</head>
+<body>
+  <div class="timer">
+    Temps écoulé : <span id="seconds">0</span> secondes
+  </div>
+
+  <script>
+    let seconds = 0;
+    const timerDisplay = document.getElementById('seconds');
+
+    // setInterval exécute une fonction toutes les 1000 millisecondes (1 seconde)
+    setInterval(() => {
+      seconds++;
+      timerDisplay.textContent = seconds;
+    }, 1000);
+  </script>
+</body>
+</html>

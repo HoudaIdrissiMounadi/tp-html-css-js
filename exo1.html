@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Changer la couleur d'une div</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    #maDiv {
+      width: 200px;
+      height: 200px;
+      background-color: rgb(41, 17, 17);
+      margin: 20px auto;
+      border-radius: 10px;
+      transition: background-color 0.5s;
+    
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #4d220a;
+      color: white;
+    }
+
+   
+     button:hover {
+      background-color:#4d220a
+       ;}
+  </style>
+</head>
+  <body>
+
+  <h2>Changer la couleur de la div</h2>
+
+  <div id="maDiv"></div>
+
+  <button onclick="changerCouleur()">Changer la couleur</button>
+
+  <script>
+    function changerCouleur() {
+      const div = document.getElementById("maDiv");
+      const couleurs = ["#e74c3c", "#27ae60", "#8e44ad", "#f1c40f", "#1abc9c", "#e67e22"];
+      const couleurAleatoire = couleurs[Math.floor(Math.random() * couleurs.length)];
+      div.style.backgroundColor = couleurAleatoire;
+    }
+  </script>
+
+</body>
+</html>

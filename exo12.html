@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive avec JavaScript</title>
+  <style>
+    body { font-family: Poppins, sans-serif; text-align: center; }
+    .container { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .box { background: #2196f3; color: white; padding: 20px; border-radius: 8px; width: 100px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h2>Responsive Page avec JavaScript</h2>
+  <div class="container">
+    <div class="box">Bloc 1</div>
+    <div class="box">Bloc 2</div>
+    <div class="box" id="bloc3">Bloc 3</div>
+  </div>
+
+  <script>
+    function handleResize() {
+      const bloc3 = document.getElementById("bloc3");
+      if (window.innerWidth < 600) {
+        bloc3.classList.add("hidden");
+      } else {
+        bloc3.classList.remove("hidden");
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements de souris</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            user-select: none;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .box-blue {
+            background-color: #3498db;
+        }
+
+        .box-red {
+            background-color: #e74c3c;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            color: white;
+            text-align: center;
+            width: 100%;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Passez la souris sur les boîtes !</h1>
+    <div class="container">
+        <div class="box box-blue" id="box1">Passez la souris ici</div>
+        <div class="box box-red" id="box2">Passez la souris ici</div>
+    </div>
+
+    <script>
+        const box1 = document.getElementById('box1');
+        const box2 = document.getElementById('box2');
+
+        // Couleurs pour l'alternance
+        const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+        let currentIndex1 = 0;
+        let currentIndex2 = 1;
+
+        // Événement mouseenter pour box1
+        box1.addEventListener('mouseenter', function() {
+            currentIndex1 = (currentIndex1 + 1) % colors.length;
+            box1.style.backgroundColor = colors[currentIndex1];
+        });
+
+        // Événement mouseleave pour box1
+        box1.addEventListener('mouseleave', function() {
+            box1.style.backgroundColor = '#3498db';
+        });
+
+        // Événement mouseenter pour box2
+        box2.addEventListener('mouseenter', function() {
+            currentIndex2 = (currentIndex2 + 1) % colors.length;
+            box2.style.backgroundColor = colors[currentIndex2];
+        });
+
+        // Événement mouseleave pour box2
+        box2.addEventListener('mouseleave', function() {
+            box2.style.backgroundColor = '#e74c3c';
+        });
+    </script>
+</body>
+</html>

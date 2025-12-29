@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire de validation</title>
+
+   <form onsubmit="return validerFormulaire()">
+    <h2>Formulaire</h2>
+
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" placeholder="Entrez votre nom"required>
+
+    <label for="email" >Email :</label>
+    <input type="email" id="email" placeholder="Entrez votre email"required>
+
+    <button type="submit">Soumettre</button>
+
+    <div id="message"></div>
+  </form>
+
+  <script>
+    function validerFormulaire() {
+      const nom = document.getElementById("nom").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message");
+
+      if (nom === "" || email === "") {
+        message.textContent = "⚠️ Veuillez remplir tous les champs.";
+        message.style.color = "red";
+        return false;
+      }
+      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!regexEmail.test(email)) {
+        message.textContent = "❌ L'adresse email n'est pas valide.";
+        message.style.color = "red";
+        return false;
+      }    
+      message.textContent = "✅ Formulaire soumis avec succès !";
+      message.style.color = "green";
+      return false; }  
+  </script>
+
+</body>
+</html>
